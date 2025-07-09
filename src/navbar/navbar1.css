@@ -1,0 +1,578 @@
+/* Enhanced Cosmic Navbar Styles */
+
+/* Static stars background */
+.static-stars-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.static-star {
+  position: absolute;
+  background-color: #00eeff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 238, 255, 0.8);
+}
+
+/* Static stars for mobile menu */
+.static-menu-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.static-menu-star {
+  position: absolute;
+  background-color: #00eeff;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 238, 255, 0.7);
+}
+
+/* Nebula effect */
+.nebula-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 136, 255, 0.03) 0%,
+    rgba(0, 238, 255, 0.02) 40%,
+    transparent 70%
+  );
+  z-index: 2;
+}
+
+/* Main navbar container */
+.cosmic-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cosmic-nav-container {
+  position: relative;
+  background-color: rgba(10, 30, 54, 0.75);
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  height: 60px;
+  margin: 10px auto;
+  padding: 0 20px;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    0 0 15px rgba(0, 136, 255, 0.15),
+    inset 0 0 10px rgba(0, 238, 255, 0.05);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  border: 1px solid rgba(0, 238, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Glow effect */
+.cosmic-glow-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 238, 255, 0.05) 0%,
+    rgba(0, 136, 255, 0.02) 50%,
+    transparent 70%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Scrolled state */
+.cosmic-nav.scrolled .cosmic-nav-container {
+  height: 50px;
+  background-color: rgba(2, 12, 23, 0.95);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 136, 255, 0.3);
+  border-color: rgba(0, 238, 255, 0.4);
+  backdrop-filter: blur(15px);
+}
+
+/* Logo Styles */
+.cosmic-logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 5;
+  margin-right: auto;
+}
+
+.cosmic-logo-container:hover {
+  transform: scale(1.05);
+}
+
+.cosmic-logo {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  margin-right: 12px;
+}
+
+/* Logo Image */
+.logo-image-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: -35px;
+}
+
+.cosmic-logo-image {
+  height: 34px;
+  width: auto;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 8px rgba(0, 238, 255, 0.5));
+  opacity: 0.9;
+}
+
+.cosmic-logo-image.enlarged {
+  height: 38px;
+}
+
+.cosmic-logo-container:hover .cosmic-logo-image {
+  filter: drop-shadow(0 0 12px rgba(0, 238, 255, 0.8));
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Desktop Navigation */
+.cosmic-nav-desktop {
+  display: none;
+  position: relative;
+  z-index: 5;
+}
+
+@media (min-width: 768px) {
+  .cosmic-nav-desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 0 25px;
+    margin-left: 1rem;
+  }
+}
+
+.cosmic-nav-item {
+  padding: 6px 14px;
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #7dd3fc;
+  background: transparent;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  justify-self: center;
+  align-self: center;
+  text-decoration: none;
+}
+
+.nav-text {
+  position: relative;
+  z-index: 2;
+}
+
+.nav-hover-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 238, 255, 0.1);
+  border-radius: 4px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.cosmic-nav-item:hover .nav-hover-effect,
+.cosmic-nav-item.active .nav-hover-effect {
+  transform: scaleX(1);
+}
+
+.nav-active-indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00eeff, transparent);
+  box-shadow: 0 0 8px rgba(0, 238, 255, 0.8);
+  z-index: 3;
+}
+
+.cosmic-nav-item:hover,
+.cosmic-nav-item.active {
+  color: #00eeff;
+  text-shadow: 0 0 5px rgba(0, 238, 255, 0.7);
+}
+
+/* Download Button - Updated to match cosmic theme */
+.cosmic-download-btn {
+  background-color: rgba(0, 238, 255, 0.15);
+  color: #00eeff;
+  border: 1px solid rgba(0, 238, 255, 0.4);
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 5;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 0 15px rgba(0, 238, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-text {
+  position: relative;
+  z-index: 2;
+  margin-right: 8px;
+}
+
+.download-icon {
+  position: relative;
+  z-index: 2;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-left: 5px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300eeff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 5px rgba(0, 238, 255, 0.7));
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 238, 255, 0.3),
+    rgba(0, 238, 255, 0.1),
+    transparent
+  );
+  animation: button-shine 3s infinite;
+  z-index: 1;
+}
+
+@keyframes button-shine {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+
+.button-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.button-particle {
+  position: absolute;
+  background: rgba(0, 238, 255, 0.5);
+  border-radius: 50%;
+  width: 3px;
+  height: 3px;
+  animation: particle-rise 2s ease-out infinite;
+  opacity: 0;
+}
+
+.button-particle:nth-child(1) { left: 20%; animation-delay: 0s; }
+.button-particle:nth-child(2) { left: 40%; animation-delay: 0.4s; }
+.button-particle:nth-child(3) { left: 60%; animation-delay: 0.8s; }
+.button-particle:nth-child(4) { left: 80%; animation-delay: 1.2s; }
+.button-particle:nth-child(5) { left: 30%; animation-delay: 1.6s; }
+
+@keyframes particle-rise {
+  0% { bottom: -10px; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { bottom: 40px; opacity: 0; }
+}
+
+.cosmic-download-btn:hover {
+  background-color: rgba(0, 238, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 238, 255, 0.4);
+  border-color: rgba(0, 238, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Mobile Toggle Button */
+.cosmic-nav-mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  position: relative;
+  z-index: 5;
+}
+
+@media (min-width: 768px) {
+  .cosmic-nav-mobile-toggle {
+    display: none;
+  }
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 16px;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #00eeff;
+  transition: all 0.3s ease;
+  transform-origin: left center;
+  box-shadow: 0 0 5px rgba(0, 238, 255, 0.7);
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(-2px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(2px);
+}
+
+/* Mobile Menu */
+.cosmic-nav-mobile {
+  position: fixed;
+  top: 80px;
+  left: 16px;
+  right: 16px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 999;
+}
+
+.cosmic-nav-mobile.open {
+  max-height: 300px;
+}
+
+.mobile-menu-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(2, 12, 23, 0.95);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 238, 255, 0.3);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 136, 255, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.cosmic-nav-mobile-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 5;
+}
+
+.cosmic-mobile-item {
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: #7dd3fc;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  position: relative;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.mobile-item-text {
+  position: relative;
+  z-index: 2;
+}
+
+.mobile-item-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #00eeff;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 238, 255, 0.7);
+}
+
+.cosmic-mobile-item:hover .mobile-item-indicator,
+.cosmic-mobile-item.active .mobile-item-indicator {
+  transform: scaleY(1);
+}
+
+.cosmic-mobile-item:hover,
+.cosmic-mobile-item.active {
+  background-color: rgba(0, 238, 255, 0.1);
+  color: #00eeff;
+  text-shadow: 0 0 5px rgba(0, 238, 255, 0.7);
+}
+
+/* Mobile Download Button - Updated to match theme */
+.cosmic-mobile-download {
+  margin-top: 8px;
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(0, 238, 255, 0.15);
+  color: #00eeff;
+  border: 1px solid rgba(0, 238, 255, 0.4);
+  border-radius: 6px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 238, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(0, 238, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-download-icon {
+  position: relative;
+  z-index: 2;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-left: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300eeff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 5px rgba(0, 238, 255, 0.7));
+}
+
+.mobile-download-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 238, 255, 0.3),
+    rgba(0, 238, 255, 0.1),
+    transparent
+  );
+  animation: mobile-shine 3s infinite;
+  z-index: 1;
+}
+
+@keyframes mobile-shine {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+
+.cosmic-mobile-download:hover {
+  background-color: rgba(0, 238, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 238, 255, 0.4);
+  border-color: rgba(0, 238, 255, 0.6);
+}
+
+/* Navbar-specific stars */
+.navbar-static-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.navbar-static-star {
+  position: absolute;
+  background-color: #00eeff;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 238, 255, 0.7);
+}
+
+/* Remove the old static stars background */
+.static-stars-background {
+  display: none;
+}

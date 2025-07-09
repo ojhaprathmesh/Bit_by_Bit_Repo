@@ -1,0 +1,103 @@
+/* TimeLapseNavigation.css
+.time-lapse-navbar {
+    width: 100%;
+    padding: 20px 0;
+    background: linear-gradient(to right, #000000, #1a1a2e, #000000);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .timeline {
+    display: flex;
+    min-width: 100%;
+    padding: 0 20px;
+    position: relative;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 0;
+  }
+  
+  .timeline-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 0 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    color: white;
+    min-width: 80px;
+    text-align: center;
+  }
+  
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 2px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .item-label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  
+  .evolution-indicator {
+    height: 3px;
+    background: linear-gradient(to right, #4CAF50, #8BC34A);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+    align-self: flex-start;
+    margin-top: 5px;
+  }
+  
+
+  .evolution-dormant {
+    background-color: rgba(66, 66, 66, 0.7);
+    box-shadow: 0 0 5px rgba(66, 66, 66, 0.5);
+  }
+  
+  .evolution-low {
+    background-color: rgba(33, 150, 243, 0.7);
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.5);
+  }
+  
+  .evolution-medium {
+    background-color: rgba(156, 39, 176, 0.7);
+    box-shadow: 0 0 12px rgba(156, 39, 176, 0.5);
+  }
+  
+  .evolution-high {
+    background-color: rgba(233, 30, 99, 0.7);
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.7);
+  }
+  
+  .timeline-item:hover {
+    transform: translateY(-5px) scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    .timeline-item {
+      min-width: 60px;
+      padding: 8px 10px;
+      margin: 0 10px;
+    }
+  }
+  
+  */

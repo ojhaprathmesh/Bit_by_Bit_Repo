@@ -1,0 +1,902 @@
+/* HackathonRoadmap.css - Sophisticated Minimalist with Edge */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --primary-blue: #0a1e36;
+  --accent-blue: #0088ff;
+  --neon-blue: #00eeff;
+  --deep-blue: #020c17;
+  --white: #ffffff;
+  --off-white: #f0f7ff;
+  --subtle-white: rgba(255, 255, 255, 0.07);
+  --glass: rgba(255, 255, 255, 0.015);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hackathon-container {
+  margin: 0.5rem;
+  border-radius: 0.625rem;
+  background-color: var(--deep-blue);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* Ultra-thin grid lines for that architectural feel */
+.hackathon-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, var(--deep-blue) 2px, transparent 1%) center,
+    linear-gradient(var(--deep-blue) 2px, transparent 1%) center;
+  background-size: 40px 40px;
+  background-position: center;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%);
+  opacity: 0.2;
+  z-index: 0;
+}
+
+/* Header - Minimal but impactful */
+.header {
+  position: relative;
+  margin-bottom: 4rem;
+  z-index: 1;
+}
+
+.header-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+  margin: 0;
+  color: var(--white);
+  position: relative;
+  display: inline-block;
+}
+
+/* Crazy glitch effect */
+.header-title::before {
+  content: "TIME LINE";
+  position: absolute;
+  left: 2px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--neon-blue);
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  animation: glitch 3s infinite alternate;
+  z-index: -1;
+}
+
+.header-title::after {
+  content: "TIME LINE";
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--accent-blue);
+  overflow: hidden;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  animation: glitch 2s infinite alternate-reverse;
+  animation-delay: 0.2s;
+  z-index: -1;
+}
+
+@keyframes glitch {
+  0%, 95% {
+    transform: none;
+    opacity: 1;
+  }
+  96% {
+    transform: translateX(1px);
+    opacity: 0.8;
+  }
+  98% {
+    transform: translateX(-2px);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.header-date-container {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.header-line {
+  height: 1px;
+  width: 80px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, var(--accent-blue) 50%, rgba(255,255,255,0) 100%);
+}
+
+.header-date {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 0 1rem;
+  color: var(--off-white);
+  opacity: 0.8;
+}
+
+/* Progress Section - Minimal but sophisticated */
+.progress-section {
+  position: relative;
+  margin-bottom: 3rem;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  border-radius: 0.25rem;
+  background: var(--glass);
+  border: 1px solid var(--subtle-white);
+  padding: 2rem;
+}
+
+.progress-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.progress-bar-container {
+  grid-column: 1 / -1;
+  margin-bottom: 1rem;
+}
+
+.progress-bar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.progress-label, .status-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.progress-percentage {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.progress-bar {
+  height: 2px;
+  background-color: var(--subtle-white);
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--neon-blue);
+  position: relative;
+  box-shadow: 0 0 10px var(--neon-blue);
+  transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Crazy progress tracker dots */
+.progress-bar-fill::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--white);
+  border-radius: 50%;
+  box-shadow: 0 0 15px 2px var(--neon-blue);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 238, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 238, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 238, 255, 0);
+  }
+}
+
+.status-card {
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.status-card::before {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  left: 0;
+  width: 20px;
+  height: 1px;
+  background: var(--accent-blue);
+}
+
+.status-value {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-top: 0.5rem;
+  color: var(--white);
+  letter-spacing: -1px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.time-value {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -1px;
+}
+
+.event-value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Timeline - Minimal yet striking */
+.timeline-container {
+  position: relative;
+  padding: 3rem 0;
+  margin-left: 1rem;
+  z-index: 1;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 23px;
+  width: 1px;
+  background-color: var(--subtle-white);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.day-label-container {
+  position: relative;
+  margin: 3rem 0;
+}
+
+.day-marker {
+  position: absolute;
+  left: 23px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--primary-blue);
+  border: 1px solid var(--accent-blue);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-marker-inner {
+  width: 6px;
+  height: 6px;
+  background-color: var(--neon-blue);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.day-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-left: 3rem;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.day-divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent-blue) 0%, rgba(255,255,255,0) 100%);
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+  width: 100px;
+}
+
+.event-container {
+  display: flex;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* Crazy hover effect for event nodes */
+.event-node {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary-blue);
+  border: 1px solid var(--accent-blue);
+  border-radius: 50%;
+  margin-right: 2.5rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-50%);
+  left: 23px;
+}
+
+.event-node::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  height: 1px;
+  width: 2rem;
+  background: linear-gradient(90deg, var(--accent-blue), transparent);
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.event-node-active {
+  background-color: var(--neon-blue);
+  transform: translateX(-50%) scale(1.5);
+  box-shadow: 0 0 15px var(--neon-blue);
+}
+
+.event-node-active::before {
+  opacity: 1;
+}
+
+.event-icon {
+  font-size: 0;
+  color: transparent;
+}
+
+.event-node:hover .event-icon,
+.event-node-active .event-icon {
+  font-size: 6px;
+  color: var(--primary-blue);
+}
+
+.event-card {
+  flex: 1;
+  background-color: transparent;
+  border-radius: 0px 0.25rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  margin-left: 1.5rem;
+  border-left: none;
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent-blue) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.event-card:hover::before,
+.event-card-active::before {
+  opacity: 1;
+}
+
+.event-card-active {
+  background-color: var(--subtle-white);
+  padding: 1.5rem;
+  margin-left: 1.5rem;
+  transform: translateX(5px);
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.event-name {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--white);
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.event-time {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--off-white);
+  opacity: 0.6;
+}
+
+/* Crazy venue button */
+.venue-button {
+  background-color: transparent;
+  border: 1px solid var(--accent-blue);
+  border-radius: 0;
+  padding: 0.35rem 0.8rem;
+  color: var(--accent-blue);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.venue-button:hover {
+  color: var(--primary-blue);
+}
+
+.venue-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-blue);
+  transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+  z-index: -1;
+}
+
+.venue-button:hover::before {
+  transform: translateX(100%);
+}
+
+.event-details {
+  margin-top: 1.5rem;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.event-description {
+  margin: 0 0 1.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--off-white);
+  opacity: 0.8;
+}
+
+.event-venue {
+  display: inline-block;
+}
+
+.venue-text {
+  font-size: 0.85rem;
+  color: var(--accent-blue);
+  font-style: italic;
+}
+
+/* Venue Modal - Minimalist with edge */
+.venue-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(2, 12, 23, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: modalBackdrop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalBackdrop {
+  from {
+    background-color: rgba(2, 12, 23, 0);
+    backdrop-filter: blur(0);
+  }
+  to {
+    background-color: rgba(2, 12, 23, 0.95);
+    backdrop-filter: blur(5px);
+  }
+}
+
+.venue-modal {
+  background-color: var(--primary-blue);
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  animation: modalSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+@keyframes modalSlide {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Crazy diagonal slice on modal */
+.venue-modal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: var(--accent-blue);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.venue-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  z-index: 10;
+}
+
+.venue-modal-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  padding: 2rem 2rem 0 2rem;
+  color: var(--white);
+  letter-spacing: -1px;
+  font-weight: 500;
+}
+
+.venue-modal-floor {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  margin-top: 0.5rem;
+}
+
+.venue-floor-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-blue);
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+.venue-floor-text {
+  font-size: 0.85rem;
+  color: var(--accent-blue);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.venue-description {
+  line-height: 1.7;
+  padding: 2rem;
+  color: var(--off-white);
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--subtle-white);
+}
+
+.venue-map-container {
+  padding: 2rem;
+}
+
+.venue-map-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--accent-blue);
+  margin: 0 0 1.5rem 0;
+  text-transform: uppercase;
+}
+
+.venue-map {
+  margin-bottom: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Crazy map effect */
+.venue-map::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--accent-blue) 0%, transparent 100%);
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.venue-map-image {
+  width: 100%;
+  display: block;
+  filter: grayscale(100%) contrast(1.2) brightness(0.8);
+  transition: filter 0.3s ease;
+}
+
+.venue-map:hover .venue-map-image {
+  filter: grayscale(0%) contrast(1.2) brightness(0.9);
+}
+
+.venue-map-help {
+  font-size: 0.75rem;
+  color: var(--off-white);
+  opacity: 0.6;
+  text-align: center;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Legend - Super minimal */
+.legend-container {
+  margin-top: 4rem;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.legend-header {
+  margin-bottom: 1.5rem;
+}
+
+.legend-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  margin: 0 0 0.75rem 0;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+}
+
+.legend-divider {
+  height: 1px;
+  background: var(--subtle-white);
+  width: 100px;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 1rem;
+}
+
+.legend-label {
+  font-size: 0.85rem;
+  color: var(--off-white);
+  opacity: 0.8;
+}
+
+/* Crazy floating dots/particles effect */
+.dots-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dots-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dot-1, .dot-2 {
+  position: absolute;
+  border-radius: 0;
+  opacity: 0.03;
+  background: var(--white);
+  mix-blend-mode: screen;
+}
+
+.dot-1 {
+  top: 20%;
+  right: -10%;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--neon-blue) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(100px);
+  animation: floatSlow 40s ease-in-out infinite;
+}
+
+.dot-2 {
+  bottom: -20%;
+  left: -10%;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-blue) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(120px);
+  animation: floatSlow 50s ease-in-out infinite alternate;
+}
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(5%) translateX(3%) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+}
+
+/* Add scanlines for that crazy tech feel */
+.hackathon-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    rgba(255, 255, 255, 0.03) 1px,
+    rgba(255, 255, 255, 0.03) 2px
+  );
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.3;
+}
+
+/* Progress tracker */
+@keyframes blink {
+  0%, 49.9% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.current-time .status-value::after {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 20px;
+  background-color: var(--neon-blue);
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 992px) {
+  .progress-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .header-title {
+    font-size: 4rem;
+  }
+  
+  .status-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hackathon-container {
+    padding: 1.5rem;
+  }
+  
+  .header-title {
+    font-size: 3rem;
+  }
+  
+  .progress-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .event-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .venue-button {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 2.2rem;
+  }
+  
+  .day-label {
+    font-size: 1.1rem;
+  }
+  
+  .header-title::before,
+  .header-title::after {
+    display: none;
+  }
+  
+  .status-card {
+    margin-bottom: 1.5rem;
+  }
+}

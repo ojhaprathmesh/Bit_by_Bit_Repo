@@ -1,0 +1,468 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+  background-color: #020c17;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  /* Ensure scrollable page */
+}
+
+.floating-hackathon-website {
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  overflow: hidden;
+  margin: 0.475rem;
+  padding: 10px;
+}
+
+.floating-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(12, 28, 59, 0.8);
+  z-index: -1;
+  opacity: 0.5;
+  border-radius: 0.625rem;
+}
+
+.website-container {
+  width: 100%;
+  max-width: 1200px;
+  background: rgba(13, 17, 23, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  padding: 60px 20px 0 20px;
+  position: relative;
+  z-index: 10;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: fit-content;
+  background: linear-gradient(135deg, rgba(13, 17, 23, 0.95) 0%, rgba(20, 24, 40, 0.95) 100%);
+  backdrop-filter: blur(20px);
+}
+
+.sponsors_section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 0 auto 40px;
+  color: #fff;
+  position: relative;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  animation: neonPulse 10s ease-in-out infinite;
+}
+
+.sponsors_section-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sponsors_section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #8a2be2 0%, #ff1493 100%);
+  box-shadow: 0 0 15px #8a2be2;
+}
+
+.sponsor-details h3 {
+  color: #40ff80;
+  text-shadow: 0 0 10px rgba(64, 255, 128, 0.5);
+  font-family:  'Inter', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.sponsor-tier {
+  color: #33cc66;
+  text-shadow: 0 0 8px rgba(64, 255, 128, 0.3);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1px;
+}
+
+.sponsor-description {
+  color: #98ffc3;
+  font-family: 'Inter', sans-serif;
+  opacity: 0;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.sponsor-description.visible {
+  opacity: 0.8;
+}
+
+.sponsors-section {
+  margin-bottom: 40px;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-items: stretch;
+  min-height: 400px;
+}
+
+.sponsor-card {
+  background: rgba(16, 24, 39, 0.9);
+  border-radius: 4px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(5, 38, 101, 0.2),
+    inset 0 0 10px rgba(5, 38, 101, 0.1);
+  border: 2px solid rgba(5, 38, 101, 0.3);
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.sponsor-card:hover {
+  box-shadow: 0 0 20px rgba(170, 200, 255, 0.3),
+    inset 0 0 15px rgba(170, 200, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.sponsor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(5, 38, 101, 0.2),
+      transparent);
+}
+
+.sponsor-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  width: 40px;
+  height: 60px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at top, #ff6b3d 0%, transparent 70%);
+  filter: blur(8px);
+  opacity: 0;
+}
+
+.sponsor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent);
+  transition: 0.5s;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sponsor-card:hover::before {
+  left: 100%;
+  opacity: 1;
+}
+
+.sponsor-logo {
+  width: 150px;
+  height: 60px;
+  margin: 0 10px 25px;
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  transition: all 0.3s ease;
+  object-fit: contain;
+  display: block;
+}
+
+.sponsor-card:hover .sponsor-logo {
+  transform: scale(1.05);
+  filter: brightness(1) invert(0) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.sponsor-details h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.sponsor-tier {
+  color: #64ffda;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+}
+
+.sponsor-description {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.timeline-section {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.timeline {
+  position: relative;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-color: #e0e0e0;
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.timeline-content {
+  width: 45%;
+  padding: 20px;
+  background-color: #f9f9fc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-content:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: auto;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #0f3460;
+  border-radius: 50%;
+}
+
+.timeline-date {
+  color: #4b4b4b;
+  font-size: 0.8rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  color: #16213e;
+  margin-bottom: 10px;
+}
+
+.timeline-description {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@keyframes neonPulse {
+  0% {
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.1);
+  }
+
+  50% {
+    text-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+  }
+
+  100% {
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.1);
+  }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .sponsors-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .website-container {
+    padding: 40px 20px 0 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .sponsors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .sponsors_section-title {
+    font-size: 2.2rem;
+  }
+  
+  .sponsor-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    min-height: auto;
+  }
+  
+  .website-container {
+    padding: 30px 15px 0 15px;
+    border-radius: 15px;
+  }
+  
+  .sponsors_section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .sponsor-logo {
+    width: 120px;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .sponsor-details h3 {
+    font-size: 1.1rem;
+  }
+  
+  .sponsor-description {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .sponsor-card {
+    padding: 20px;
+  }
+  
+  .timeline::before {
+    left: 30px;
+  }
+  
+  .timeline-content {
+    width: 80%;
+    margin-left: 60px !important;
+  }
+  
+  .timeline-marker {
+    left: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sponsors-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .website-container {
+    padding: 25px 15px 0 15px;
+    border-radius: 12px;
+  }
+  
+  .sponsors_section-title {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+  }
+  
+  .sponsors_section-title::after {
+    width: 60px;
+    height: 2px;
+  }
+  
+  .sponsor-card {
+    padding: 20px 15px;
+  }
+  
+  .sponsor-details h3 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  
+  .sponsor-tier {
+    font-size: 0.8rem;
+  }
+  
+  .sponsor-description {
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .floating-hackathon-website {
+    margin: 0.25rem;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sponsors_section-title {
+    font-size: 1.3rem;
+  }
+  
+  .sponsor-logo {
+    width: 100px;
+    height: 40px;
+    margin-bottom: 15px;
+  }
+  
+  .sponsor-card {
+    padding: 15px 10px;
+  }
+}

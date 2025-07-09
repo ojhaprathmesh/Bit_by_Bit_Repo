@@ -1,0 +1,885 @@
+/* BitByBit.css */
+.clue-hunt-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 70px auto 0;
+  padding: 15px;
+  background-color: rgba(8, 15, 40, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(0, 136, 255, 0.2);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 238, 255, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.clue-hunt-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 136, 255, 0.1) 0%,
+    rgba(0, 238, 255, 0.05) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.clue-hunt-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 15px rgba(0, 238, 255, 0.7);
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 5;
+}
+
+.clue-hunt-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00eeff, transparent);
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.8);
+}
+
+/* Background elements */
+.cosmic-stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cosmic-star {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+/* Message Styles */
+.message {
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 12px 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.message.error {
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  color: #ff6b6b;
+}
+
+.message.success {
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  color: #00ff95;
+}
+
+/* Add twinkle animation for stars */
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.3);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .clue-hunt-container {
+    padding: 15px;
+    margin: 60px 10px 30px;
+  }
+  
+  .clue-hunt-container h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clue-hunt-container {
+    padding: 10px;
+    margin: 50px 8px 20px;
+  }
+  
+  .treasure-hunt-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .clue-card h2 {
+    font-size: 1.3rem;
+  }
+  
+  .submit-button, .next-button {
+    padding: 10px 15px;
+  }
+  
+  .first-clue, .previous-hint, .hint-container {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Full page background - SCOPED TO WRAPPER */
+.clue-hunt-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.clue-hunt-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 20px 15px;
+}
+
+.clue-hunt-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 238, 255, 0.3);
+  padding: 20px;
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 238, 255, 0.2);
+}
+
+.container-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 238, 255, 0.1) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.pulse-active {
+  animation: pulse 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 30px rgba(0, 238, 255, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(0, 238, 255, 0.7);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(0, 238, 255, 0.3);
+    transform: scale(1);
+  }
+}
+
+.treasure-hunt-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.treasure-hunt-header h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, #00eeff, #5b42f3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 0 20px rgba(0, 238, 255, 0.5);
+}
+
+.clue-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clue-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #00eeff;
+}
+
+.first-clue, .previous-hint {
+  background-color: rgba(0, 238, 255, 0.1);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 238, 255, 0.3);
+  width: 100%;
+}
+
+.previous-hint p {
+  margin: 8px 0;
+}
+
+.answer-form {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.input-group {
+  margin-bottom: 12px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 238, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  box-shadow: 0 0 15px rgba(0, 238, 255, 0.5);
+  border-color: #00eeff;
+}
+
+.submit-button {
+  background: linear-gradient(45deg, #00eeff, #5b42f3);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0, 238, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hint-container {
+  background-color: rgba(0, 238, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  width: 100%;
+  margin-top: 15px;
+  border: 1px solid rgba(0, 238, 255, 0.3);
+  animation: fadeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hint-container h3 {
+  color: #00eeff;
+  margin-top: 0;
+}
+
+.next-button {
+  background: linear-gradient(45deg, #5b42f3, #00eeff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.next-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0, 238, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.progress-indicator {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.progress-indicator span {
+  font-weight: bold;
+  color: #00eeff;
+}
+
+.completion-message {
+  text-align: center;
+}
+
+.completion-message h2 {
+  font-size: 2rem;
+  color: #00eeff;
+  margin-bottom: 20px;
+}
+
+.completion-message p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.reset-button {
+  background: linear-gradient(45deg, #00eeff, #5b42f3);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.reset-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0, 238, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-title {
+  font-size: 1.2rem;
+  color: #00eeff;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .clue-hunt-container {
+    padding: 15px;
+  }
+  
+  .treasure-hunt-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .clue-card h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clue-hunt-container {
+    padding: 10px;
+  }
+  
+  .treasure-hunt-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .clue-card h2 {
+    font-size: 1.3rem;
+  }
+  
+  .submit-button, .next-button {
+    padding: 10px 15px;
+  }
+}
+
+/* Digital scanner effect */
+.digital-scanner {
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 236, 255, 0.2) 0%,
+    rgba(0, 236, 255, 0.1) 40%,
+    rgba(0, 236, 255, 0) 70%
+  );
+  box-shadow: 0 0 20px rgba(0, 236, 255, 0.4);
+  pointer-events: none;
+  z-index: 5;
+  animation: pulse 3s infinite alternate;
+  transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+/* Grid overlay */
+.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 236, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 236, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* Floating objects */
+.floating-objects {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.floating-object {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 15s infinite linear;
+  pointer-events: none;
+}
+
+.floating-object.satellite {
+  background: radial-gradient(circle, rgba(0, 217, 255, 0.8) 0%, rgba(0, 136, 255, 0.2) 70%);
+  box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+}
+
+.floating-object.asteroid {
+  background-color: rgba(150, 150, 150, 0.3);
+  border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+  box-shadow: 0 0 15px rgba(100, 100, 100, 0.3);
+}
+
+.floating-object.data-packet {
+  background: radial-gradient(circle, rgba(157, 0, 255, 0.6) 0%, rgba(200, 0, 255, 0.1) 70%);
+  box-shadow: 0 0 15px rgba(157, 0, 255, 0.4);
+  border-radius: 5px;
+  transform: rotate(45deg);
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(50px, 20px) rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: translate(0, 50px) rotate(180deg) scale(1);
+  }
+  75% {
+    transform: translate(-50px, 20px) rotate(270deg) scale(0.9);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(1);
+  }
+}
+
+/* Cosmic Pulse */
+.cosmic-pulse {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  background-color: rgba(0, 236, 255, 1);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 236, 255, 0.8);
+  z-index: 5;
+  animation: cosmic-pulse 1.5s ease-out;
+  pointer-events: none;
+}
+
+@keyframes cosmic-pulse {
+  0% {
+    width: 5px;
+    height: 5px;
+    opacity: 1;
+  }
+  100% {
+    width: 300vw;
+    height: 300vw;
+    opacity: 0;
+  }
+}
+
+/* Pulse effect on container */
+.clue-hunt-container.pulse-active {
+  animation: container-pulse 0.5s;
+}
+
+@keyframes container-pulse {
+  0% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 136, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(0, 236, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 136, 255, 0.2);
+  }
+}
+
+/* Text glitch effect */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch-text::before {
+  color: #ff00ea;
+  z-index: -1;
+  animation: glitch-anim 2.5s infinite alternate-reverse;
+}
+
+.glitch-text::after {
+  color: #00eeff;
+  z-index: -2;
+  animation: glitch-anim 2s infinite alternate;
+}
+
+@keyframes glitch-anim {
+  0% {
+    transform: translate(0);
+    opacity: 0.8;
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translate(-2px, -2px);
+    opacity: 0.8;
+  }
+  60% {
+    transform: translate(2px, 2px);
+    opacity: 0;
+  }
+  80% {
+    transform: translate(2px, -2px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 0.8;
+  }
+}
+
+/* Team info data bits */
+.data-bit {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: rgba(0, 236, 255, 0.8);
+  margin: 0 10px;
+  border-radius: 50%;
+  animation: data-bit-pulse 1.5s infinite alternate;
+}
+
+@keyframes data-bit-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+/* Tab Navigation Styles */
+.clue-hunt-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 238, 255, 0.2);
+  padding-bottom: 8px;
+  position: relative;
+  z-index: 5;
+}
+
+.clue-hunt-tab {
+  padding: 8px 15px;
+  margin: 0 10px;
+  border-radius: 5px 5px 0 0;
+  color: #a7c7e3;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+  background-color: rgba(0, 238, 255, 0.05);
+  border: 1px solid rgba(0, 238, 255, 0.2);
+  border-bottom: none;
+}
+
+.clue-hunt-tab:hover {
+  background-color: rgba(0, 238, 255, 0.1);
+  color: #00eeff;
+  box-shadow: 0 -3px 10px rgba(0, 238, 255, 0.1);
+}
+
+.clue-hunt-tab.active {
+  background-color: rgba(0, 238, 255, 0.15);
+  color: #00eeff;
+  border-color: rgba(0, 238, 255, 0.4);
+  box-shadow: 0 -3px 10px rgba(0, 238, 255, 0.2);
+}
+
+.clue-hunt-tab.reset-tab {
+  background-color: rgba(231, 76, 60, 0.1);
+  border-color: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+.clue-hunt-tab.reset-tab:hover {
+  background-color: rgba(231, 76, 60, 0.2);
+  box-shadow: 0 -3px 10px rgba(231, 76, 60, 0.1);
+}
+
+/* Responsive tab layout */
+@media (max-width: 600px) {
+  .clue-hunt-tabs {
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+  }
+  
+  .clue-hunt-tab {
+    margin: 5px;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
+/* Add the following styles to the end of the file */
+
+.mapper-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.mapper-card {
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 238, 255, 0.2);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.mapper-card:hover {
+  box-shadow: 0 0 25px rgba(0, 238, 255, 0.2);
+  border-color: rgba(0, 238, 255, 0.3);
+}
+
+.found-locations {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: rgba(0, 238, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 238, 255, 0.2);
+}
+
+.found-locations h3 {
+  color: #00eeff;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00eeff, #5b42f3);
+  border-radius: 4px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Smooth transitions */
+.input-group input,
+.submit-button,
+.hint-container,
+.message {
+  transition: all 0.3s ease;
+}
+
+/* Improved animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Update existing styles to be smoother */
+.clue-hunt-container {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pulse-active {
+  animation: pulse 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 30px rgba(0, 238, 255, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(0, 238, 255, 0.7);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(0, 238, 255, 0.3);
+    transform: scale(1);
+  }
+}
+
+/* Fix choppy UI */
+.hint-container {
+  animation: fadeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.submit-button:hover,
+.next-button:hover,
+.reset-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0, 238, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Custom styles for the navbar on BitByBit page */
+.clue-hunt-wrapper .cosmic-nav-container {
+  max-width: 1200px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Override so the navbar shows on mobile */
+@media (min-width: 768px) {
+  .clue-hunt-wrapper .cosmic-nav-desktop {
+    display: flex !important;
+  }
+}
+
+/* Logo styles */
+.cosmic-logo-image {
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+.cosmic-logo-image.enlarged {
+  height: 50px;
+}
+
+.logo-image-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cosmic-logo-image {
+    height: 30px;
+  }
+  
+  .cosmic-logo-image.enlarged {
+    height: 40px;
+  }
+} 

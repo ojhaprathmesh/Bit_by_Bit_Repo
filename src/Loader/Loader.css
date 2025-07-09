@@ -1,0 +1,473 @@
+.retro-loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a1e36;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Orbitron', 'Press Start 2P', sans-serif;
+    z-index: 9999;
+    color: #00eeff;
+    perspective: 1000px;
+  }
+  
+  /* Grid Background */
+  .grid-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(to right, rgba(0, 136, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 136, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: perspective(500px) rotateX(60deg);
+    transform-origin: center center;
+    animation: gridMove 20s linear infinite;
+  }
+  
+  @keyframes gridMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 1000px;
+    }
+  }
+  
+  /* Terminal Window */
+  .terminal {
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(2, 12, 23, 0.8);
+    border: 2px solid rgba(0, 136, 255, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 238, 255, 0.7), 
+                inset 0 0 10px rgba(0, 238, 255, 0.3);
+    overflow: hidden;
+    z-index: 5;
+    animation: glitch 5s infinite;
+    backdrop-filter: blur(10px);
+  }
+  
+  .terminal-header {
+    display: flex;
+    padding: 5px 10px;
+    background-color: rgba(0, 136, 255, 0.3);
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 2px solid rgba(0, 136, 255, 0.5);
+    justify-content: space-between;
+    align-items: center;
+    text-shadow: 0 0 5px rgba(0, 238, 255, 0.7);
+  }
+  
+  .terminal-buttons {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #020c17;
+    border: 1px solid rgba(0, 136, 255, 0.5);
+  }
+  
+  .terminal-content {
+    padding: 15px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .typing-text {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    animation: textGlow 2s infinite alternate;
+    text-shadow: 0 0 5px #00eeff;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  
+  .progress-container {
+    height: 20px;
+    background-color: rgba(2, 12, 23, 0.8);
+    border: 1px solid rgba(0, 136, 255, 0.5);
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #0a1e36, #00eeff);
+    transition: width 0.1s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progress-bar:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.4) 50%, 
+      transparent 100%);
+    animation: shine 1.5s infinite;
+  }
+  
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 3px #000;
+    z-index: 1;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  
+  .blink-cursor {
+    width: 10px;
+    height: 20px;
+    background-color: #00eeff;
+    margin-top: 10px;
+    animation: blink 1s step-start infinite;
+  }
+  
+  .terminal-lines {
+    margin-top: 20px;
+  }
+  
+  .terminal-line {
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+  }
+  
+  .line-number {
+    color: #7dd3fc;
+    margin-right: 10px;
+    min-width: 20px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  
+  .line-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .pixel {
+    display: inline-block;
+    height: 8px;
+    background-color: rgba(0, 238, 255, 0.8);
+    border-radius: 1px;
+  }
+  
+  /* Scanner effect */
+  .scanner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+  }
+  
+  .scan-line {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to bottom, 
+      rgba(0, 238, 255, 0), 
+      rgba(0, 238, 255, 0.8), 
+      rgba(0, 238, 255, 0));
+    animation: scanLine 3s linear infinite;
+    opacity: 0.5;
+    z-index: 20;
+  }
+  
+  /* Stars background */
+  .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .star {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+  }
+  
+  /* Radar scanner */
+  .radar-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    z-index: 4;
+  }
+  
+  .radar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(2, 12, 23, 0.8);
+    border: 2px solid rgba(0, 136, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 136, 255, 0.3);
+  }
+  
+  .radar:before {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 238, 255, 0.3);
+  }
+  
+  .radar:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 238, 255, 0.3);
+  }
+  
+  .radar-beam {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 2px;
+    background-color: rgba(0, 238, 255, 0.7);
+    transform-origin: left center;
+    animation: radarSpin 3s linear infinite;
+    z-index: 2;
+    box-shadow: 0 0 8px rgba(0, 238, 255, 0.7);
+  }
+  
+  .blip {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #00eeff;
+    border-radius: 50%;
+    animation: blipPulse 2s infinite;
+    box-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+  }
+  
+  .blip1 {
+    top: 30%;
+    left: 40%;
+    animation-delay: 0.5s;
+  }
+  
+  .blip2 {
+    top: 60%;
+    left: 70%;
+    animation-delay: 1.2s;
+  }
+  
+  .blip3 {
+    top: 45%;
+    left: 25%;
+    animation-delay: 0.8s;
+  }
+  
+  /* Space objects */
+  .orbiting-objects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .planet {
+    position: absolute;
+    border-radius: 50%;
+    animation: orbit 30s linear infinite;
+  }
+  
+  .planet1 {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 30% 30%, #7dd3fc, #0a1e36);
+    box-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+    top: 20%;
+    left: 10%;
+  }
+  
+  .planet2 {
+    width: 35px;
+    height: 35px;
+    background: radial-gradient(circle at 30% 30%, #a7c7e3, #020c17);
+    box-shadow: 0 0 15px rgba(0, 136, 255, 0.5);
+    top: 70%;
+    right: 15%;
+    animation-duration: 40s;
+    animation-direction: reverse;
+  }
+  
+  .satellite {
+    position: absolute;
+    width: 30px;
+    height: 10px;
+    background-color: #a7c7e3;
+    top: 40%;
+    right: 30%;
+    transform: rotate(45deg);
+    animation: orbit 15s linear infinite;
+    border: 1px solid rgba(0, 136, 255, 0.3);
+  }
+  
+  .satellite:before, .satellite:after {
+    content: '';
+    position: absolute;
+    background-color: #7dd3fc;
+  }
+  
+  .satellite:before {
+    width: 20px;
+    height: 5px;
+    top: -5px;
+    left: 5px;
+  }
+  
+  .satellite:after {
+    width: 5px;
+    height: 2px;
+    bottom: -2px;
+    left: 12px;
+  }
+  
+  .asteroid {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 30%;
+    left: 65%;
+    box-shadow: -2px 2px 10px rgba(0, 238, 255, 0.7);
+    animation: asteroidMove 10s linear infinite;
+  }
+  
+  /* Animations */
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  
+  @keyframes textGlow {
+    0% { text-shadow: 0 0 5px #00eeff; }
+    100% { text-shadow: 0 0 15px #00eeff, 0 0 30px #00eeff; }
+  }
+  
+  @keyframes scanLine {
+    0% { top: -5px; }
+    100% { top: 100%; }
+  }
+  
+  @keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  @keyframes radarSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes blipPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes orbit {
+    0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+  }
+  
+  @keyframes asteroidMove {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-200px, 100px); }
+    100% { transform: translate(-400px, 200px); }
+  }
+  
+  @keyframes glitch {
+    0% { transform: translate(0); }
+    2% { transform: translate(3px, 0); }
+    4% { transform: translate(0); }
+    5% { transform: skewX(2deg); }
+    6% { transform: skewX(0); }
+    7% { opacity: 0.8; }
+    8% { opacity: 1; transform: translate(0); }
+    94% { transform: translate(0); }
+    95% { transform: translate(-3px, 0); }
+    96% { transform: translate(0); }
+    97% { transform: skewX(-2deg); }
+    98% { transform: skewX(0); }
+    99% { opacity: 0.8; }
+    100% { opacity: 1; transform: translate(0); }
+  }
+  
+  /* Add responsiveness */
+  @media (max-width: 768px) {
+    .terminal {
+      width: 90%;
+    }
+    
+    .radar-container {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .typing-text {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .terminal-content {
+      height: 250px;
+    }
+    
+    .radar-container {
+      display: none;
+    }
+  }

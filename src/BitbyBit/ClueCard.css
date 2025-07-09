@@ -1,0 +1,222 @@
+/* Clue Card Styles */
+.clue-container {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+.clue-container h2 {
+  margin-bottom: 20px;
+  color: #7dd3fc;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+}
+
+.clue-card {
+  background-color: rgba(2, 12, 23, 0.8);
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2),
+              0 0 15px rgba(0, 136, 255, 0.2);
+  margin-bottom: 30px;
+  border: 1px solid rgba(0, 238, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.clue-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 136, 255, 0.05) 0%,
+    rgba(0, 238, 255, 0.02) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.clue-card p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #a7c7e3;
+  line-height: 1.6;
+  font-family: 'Share Tech Mono', monospace;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 0 5px rgba(0, 238, 255, 0.3);
+}
+
+.clue-card form {
+  display: flex;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.clue-card input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid rgba(0, 238, 255, 0.3);
+  background-color: rgba(2, 12, 23, 0.7);
+  color: #fff;
+  border-radius: 6px 0 0 6px;
+  font-size: 1rem;
+  outline: none;
+  font-family: 'Share Tech Mono', monospace;
+  transition: all 0.3s;
+}
+
+.clue-card input:focus {
+  border-color: #00eeff;
+  box-shadow: 0 0 15px rgba(0, 238, 255, 0.3);
+}
+
+.clue-card input.correct {
+  border-color: #2ecc71;
+  background-color: rgba(46, 204, 113, 0.1);
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+}
+
+.clue-card button {
+  padding: 12px 25px;
+  background-color: rgba(0, 238, 255, 0.2);
+  color: #00eeff;
+  border: 1px solid rgba(0, 238, 255, 0.4);
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.clue-card button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 238, 255, 0.3),
+    rgba(0, 238, 255, 0.1),
+    transparent
+  );
+  transition: left 0.6s;
+  z-index: 1;
+}
+
+.clue-card button:hover::before {
+  left: 100%;
+}
+
+.clue-card button:hover {
+  background-color: rgba(0, 238, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 238, 255, 0.4);
+}
+
+.clue-card button span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Card scanner effect */
+.card-scanner {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 236, 255, 0.8), 
+    rgba(0, 236, 255, 0.8), 
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(0, 236, 255, 0.5);
+  animation: card-scan 3s infinite;
+  z-index: 1;
+}
+
+@keyframes card-scan {
+  0% {
+    top: 0;
+    opacity: 0.2;
+  }
+  50% {
+    top: 100%;
+    opacity: 0.8;
+  }
+  100% {
+    top: 0;
+    opacity: 0.2;
+  }
+}
+
+/* Team info and Reset */
+.team-info {
+  margin-bottom: 20px;
+  color: #7dd3fc;
+  font-size: 0.9rem;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 0.5px;
+}
+
+.reset-btn {
+  border-radius: 6px;
+  background-color: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.4);
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.reset-btn:hover {
+  background-color: rgba(231, 76, 60, 0.3);
+  box-shadow: 0 0 20px rgba(231, 76, 60, 0.4);
+}
+
+.reset-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(231, 76, 60, 0.3),
+    rgba(231, 76, 60, 0.1),
+    transparent
+  );
+  transition: left 0.6s;
+  z-index: 1;
+}
+
+.reset-btn:hover::before {
+  left: 100%;
+}
+
+.reset-btn span {
+  position: relative;
+  z-index: 2;
+} 

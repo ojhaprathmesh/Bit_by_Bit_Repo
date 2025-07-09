@@ -1,0 +1,1023 @@
+/* .space-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 1000px;
+  background-color: #020c17;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.background-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  z-index: 0;
+  background: linear-gradient(to bottom, #020c17, #0a1e36, #1a3a5a);
+  pointer-events: none;
+}
+
+.stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.asteroid {
+  filter: blur(0.5px);
+  transform-origin: center;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.comet {
+  pointer-events: none;
+  will-change: transform;
+}
+
+.planet {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  will-change: transform, filter;
+}
+
+.planet.saturn {
+  filter: drop-shadow(0 0 25px rgba(255, 220, 150, 0.5));
+}
+
+.planet.blue-planet {
+  filter: drop-shadow(0 0 20px rgba(100, 180, 255, 0.6));
+}
+
+.real-planet-image {
+  display: block;
+  object-fit: contain;
+  will-change: transform;
+}
+
+.content-container {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.content-wrapper {
+  max-width: 800px;
+  width: 90%;
+  text-align: center;
+  padding: 2rem;
+  pointer-events: auto;
+}
+
+.content-wrapper.mobile {
+  width: 95%;
+  padding: 1rem;
+}
+
+.discover-text {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.vision-title {
+  margin: 0;
+  margin-bottom: 1rem;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.content-paragraph {
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.expertise-button {
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(50, 80, 230, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(100, 150, 255, 0.9);
+  }
+}
+
+.expertise-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(0, 136, 255, 0.7);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .vision-title {
+    letter-spacing: -0.01em;
+  }
+  
+  .content-paragraph {
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+  
+  .button-container {
+    margin-top: 1.5rem;
+  }
+}
+
+.content-box {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.5s ease-out;
+}
+
+.content-box::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: 0.5rem;
+  background: linear-gradient(45deg, 
+    rgba(60, 100, 255, 0) 0%, 
+    rgba(60, 100, 255, 0.5) 25%, 
+    rgba(90, 120, 255, 0.8) 50%, 
+    rgba(60, 100, 255, 0.5) 75%, 
+    rgba(60, 100, 255, 0) 100%);
+  z-index: -1;
+  animation: rotateBorder 6s linear infinite;
+}
+
+@keyframes rotateBorder {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 300% 0%;
+  }
+}
+
+.space-section::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0) 0.2%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0) 0.2%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0) 0.2%);
+  background-size: 200px 200px, 150px 150px, 250px 250px;
+  animation: dustMove 60s linear infinite;
+}
+
+@keyframes dustMove {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 200% 200%, -150% 150%, 100% 300%;
+  }
+}
+
+.vision-title {
+  text-shadow: 
+    0 0 15px rgba(120, 150, 255, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 2px 0 rgba(255, 255, 255, 0.05),
+    0 3px 0 rgba(255, 255, 255, 0.025),
+    0 4px 10px rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.discover-text {
+  position: relative;
+  display: inline-block;
+}
+
+.discover-text::after {
+  content: '';
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background-color: rgba(160, 185, 255, 0.7);
+  box-shadow: 0 0 8px rgba(100, 150, 255, 0.8);
+  transition: width 0.5s ease;
+}
+
+.discover-text:hover::after {
+  width: 100%;
+}
+
+.stars-container.warp {
+  animation: warpSpeed 2s forwards;
+  transition: all 2s ease-in-out;
+}
+
+@keyframes warpSpeed {
+  0% {
+    transform: translateZ(0);
+  }
+  100% {
+    transform: translateZ(500px);
+  }
+}
+
+.planet-glow {
+  will-change: opacity;
+  transition: opacity 0.5s ease;
+}
+
+.expertise-button::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background: linear-gradient(45deg, 
+    rgba(0, 43, 255, 0.3), 
+    rgba(0, 195, 255, 0.3), 
+    rgba(0, 89, 255, 0.3));
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.expertise-button:hover::before {
+  opacity: 1;
+  animation: rotateGlow 3s linear infinite;
+}
+
+@keyframes rotateGlow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.content-container {
+  transform-style: preserve-3d;
+}
+
+
+.background-gradient {
+  transition: background 0.5s ease-out;
+}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 20, 40, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #3050e0, #5050bb);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #4060ff, #6060cc);
+}
+
+.vision-title:hover {
+  animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  text-shadow: 
+    0 0 10px rgba(100, 180, 255, 0.8),
+    0 0 20px rgba(100, 180, 255, 0.4);
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.expertise-button {
+  animation: buttonPulse 3s infinite alternate;
+  position: relative;
+}
+
+@keyframes buttonPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 89, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(50, 120, 255, 0.8), 0 0 40px rgba(50, 120, 255, 0.3);
+  }
+}
+
+.content-paragraph {
+  position: relative;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.content-paragraph:hover {
+  transform: translateX(5px);
+  color: rgb(170, 200, 255);
+}
+
+.saturn::after {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    rgba(255, 220, 180, 0.1) 62%,
+    rgba(255, 220, 180, 0.2) 65%,
+    transparent 70%
+  );
+  transform: rotateX(75deg);
+  pointer-events: none;
+}
+
+@keyframes floatDebris {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(10deg);
+  }
+  75% {
+    transform: translateY(15px) rotate(5deg);
+  }
+}
+
+
+.space-section {
+  position: relative;
+}
+
+.space-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #020c17;
+}
+
+.background-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.stellar-wind {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('/img/particles.png');
+  opacity: 0.2;
+  animation: stellarWindFlow 120s linear infinite;
+  z-index: 1;
+}
+
+@keyframes stellarWindFlow {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+/* Starfield Layers */
+/* .starfield-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.layer-1 {
+  background-image: radial-gradient(1px circle at 50% 50%, white, transparent);
+  background-size: 200px 200px;
+  opacity: 0.5;
+  animation: drift-1 240s linear infinite;
+}
+
+.layer-2 {
+  background-image: radial-gradient(1.5px circle at 50% 50%, #8af, transparent);
+  background-size: 300px 300px;
+  opacity: 0.3;
+  animation: drift-2 180s linear infinite;
+}
+
+.layer-3 {
+  background-image: radial-gradient(2px circle at 50% 50%, #f8a, transparent);
+  background-size: 400px 400px;
+  opacity: 0.2;
+  animation: drift-3 120s linear infinite;
+}
+
+@keyframes drift-1 {
+  0% { background-position: 0 0; }
+  100% { background-position: 200px 200px; }
+}
+
+@keyframes drift-2 {
+  0% { background-position: 0 0; }
+  100% { background-position: -300px 300px; }
+}
+
+@keyframes drift-3 {
+  0% { background-position: 0 0; }
+  100% { background-position: 400px -400px; }
+}
+
+
+.wormhole-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vmin;
+  height: 100vmin;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    #0C0E18,
+    #1A2251,
+    #274690,
+    #1A2251,
+    #0C0E18
+  );
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  filter: blur(20px);
+  z-index: 1;
+}
+
+
+.galaxy-spiral {
+  position: absolute;
+  z-index: 0;
+  mix-blend-mode: screen;
+}
+
+.nebulae-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.nebula {
+  position: absolute;
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+
+.stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.asteroid {
+  position: absolute;
+  z-index: 3;
+}
+
+.comet {
+  position: absolute;
+  z-index: 4;
+}
+
+
+.planet {
+  position: absolute;
+  z-index: 5;
+}
+
+.planet-glow {
+  position: absolute;
+  z-index: 5;
+}
+
+.planet::after {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  opacity: 0.4;
+  background: radial-gradient(
+    circle at center,
+    transparent 40%,
+    rgba(100, 180, 255, 0.1) 70%,
+    transparent 100%
+  );
+  animation: gravitationalLens 10s ease-in-out infinite alternate;
+  z-index: 5;
+}
+
+@keyframes gravitationalLens {
+  0% { transform: scale(1) rotate(0deg); filter: hue-rotate(0deg); }
+  50% { transform: scale(1.2) rotate(180deg); filter: hue-rotate(30deg); }
+  100% { transform: scale(1) rotate(360deg); filter: hue-rotate(0deg); }
+}
+
+
+.stellar-event {
+  position: absolute;
+  z-index: 10;
+}
+
+.stellar-event.supernova {
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 30px 10px rgba(255, 255, 255, 0.7),
+    0 0 60px 20px rgba(255, 230, 200, 0.5),
+    0 0 100px 40px rgba(255, 200, 150, 0.3);
+}
+
+.stellar-event.meteor {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(to left, white, transparent);
+  transform: rotate(45deg);
+}
+
+/* Content Styles */
+/* .content-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-wrapper {
+  max-width: 800px;
+  width: 90%;
+  padding: 2rem;
+}
+
+.content-wrapper.mobile {
+  padding: 1rem;
+}
+
+.content-portal {
+  border: 2px solid rgba(100, 180, 255, 0.5);
+  border-radius: 8px;
+  background: rgba(5, 15, 40, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  margin-top: 2rem;
+} 
+  */
+
+
+
+  /* Base styles */
+.space-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #020c17;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+/* Static background elements */
+.static-space-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.static-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 50% 50%, 
+      rgba(255,255,255,0.1) 0.5px, 
+      transparent 1px
+    );
+  background-size: 20px 20px;
+}
+
+.static-nebula {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 70% 20%, 
+      rgba(100, 120, 255, 0.05) 0%, 
+      transparent 40%
+    ),
+    radial-gradient(circle at 30% 80%, 
+      rgba(150, 100, 255, 0.05) 0%, 
+      transparent 40%
+    );
+}
+
+/* Content styling */
+.content-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.content-wrapper {
+  max-width: 800px;
+  width: 90%;
+  text-align: center;
+}
+
+.static-content-box {
+  background: rgba(5, 15, 40, 0.7);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  padding: 2rem;
+  border: 1px solid rgba(100, 150, 255, 0.2);
+}
+
+.vision-title {
+  font-size: 3.5rem;
+  background: linear-gradient(to right, 
+    rgba(120, 150, 255, 1), 
+    rgba(160, 170, 255, 1), 
+    rgba(180, 140, 255, 1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 1rem 0;
+}
+
+.discover-text {
+  color: rgba(200, 220, 255, 0.9);
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.static-divider {
+  width: 4rem;
+  height: 2px;
+  background: rgba(100, 150, 255, 0.5);
+  margin: 1.5rem auto;
+}
+
+.content-paragraph {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(230, 240, 255, 0.98) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 400;
+}
+
+/* Planets */
+.static-planet {
+  position: absolute;
+  z-index: 1;
+}
+
+.static-planet.saturn {
+  right: 12%;
+  top: 25%;
+  width: 15rem;
+}
+
+.static-planet.blue-planet {
+  left: 15%;
+  bottom: 20%;
+  width: 11rem;
+}
+
+.real-planet-image {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 20px rgba(100, 150, 255, 0.3));
+}
+
+/* Button */
+.expertise-button {
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  margin-top: 2rem;
+opacity: 1.0;
+transition: opacity 0.3s ease;
+}
+
+.expertise-button:hover {
+opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .vision-title {
+    font-size: 2.5rem;
+  }
+  
+  .static-planet.saturn {
+    right: 8%;
+    width: 9rem;
+  }
+  
+  .static-planet.blue-planet {
+    left: 12%;
+    width: 7rem;
+  }
+  
+  .content-container {
+    padding: 1rem;
+  }
+}
+/* Enhanced Register Button */
+.enhanced-register-button {
+  position: relative;
+  background: linear-gradient(135deg, #5b7cff, #825bff);
+  color: white !important;
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 25px rgba(91, 124, 255, 0.4);
+}
+
+.enhanced-register-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(91, 124, 255, 0.6);
+}
+
+/* Text Visibility Improvements */
+.enhanced-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(230, 240, 255, 0.98) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 400;
+}
+
+.location-text {
+  font-size: 1.15rem;
+  color: rgba(200, 220, 255, 0.95) !important;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+/* Add these media queries at the bottom of your CSS */
+@media (max-width: 768px) {
+  .vision-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin: 0.5rem 0;
+  }
+
+  .discover-text {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+  }
+
+  .content-paragraph {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .static-planet.saturn {
+    right: 5%;
+    top: 15%;
+    width: 8rem;
+  }
+
+  .static-planet.blue-planet {
+    left: 5%;
+    bottom: 15%;
+    width: 6rem;
+  }
+
+  .static-divider {
+    margin: 1rem auto;
+  }
+
+  .enhanced-register-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .enhanced-text,
+  .location-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vision-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+
+  .discover-text {
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+  }
+
+  .content-paragraph {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .static-planet.saturn {
+    width: 6rem;
+    right: 2%;
+    top: 10%;
+  }
+
+  .static-planet.blue-planet {
+    width: 4.5rem;
+    left: 2%;
+    bottom: 10%;
+  }
+
+  .enhanced-register-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .static-content-box {
+    padding: 1.5rem;
+  }
+
+  .content-container {
+    padding: 1rem;
+  }
+
+  .static-divider {
+    width: 3rem;
+    height: 1.5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .vision-title {
+    font-size: 1.6rem;
+  }
+
+  .discover-text {
+    font-size: 0.8rem;
+  }
+
+  .content-paragraph {
+    font-size: 0.9rem;
+  }
+
+  .static-planet.saturn {
+    width: 5rem;
+  }
+
+  .static-planet.blue-planet {
+    width: 4rem;
+  }
+
+  .enhanced-register-button {
+    font-size: 0.85rem;
+    padding: 0.7rem 1.2rem;
+  }
+}

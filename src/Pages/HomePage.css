@@ -1,0 +1,87 @@
+.below-nav-content {
+    position: fixed; /* Changed from absolute to fixed */
+    bottom: 6rem; /* Increased from 4rem to 6rem to move it lower */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000; /* Increased z-index to ensure it's above the navbar */
+    transition: all 0.5s ease;
+}
+
+.below-nav-content.hidden {
+    transform: translate(-50%, 100%); /* Changed from -100% to 100% to slide down instead of up */
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.below-nav-content.visible {
+    transform: translate(-50%, 0);
+    opacity: 1; /* Changed from 0.8 to 1 for better visibility */
+    pointer-events: all;
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-time {
+    color: #64ffda;
+    font-family: monospace;
+    font-size: 1.5rem; /* Reduced from 2rem for better mobile responsiveness */
+    text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+.nav-register {
+    padding: 0.8rem 2rem;
+    border: 2px solid #64ffda;
+    background: rgba(12, 28, 59, 0.7); /* Added semi-transparent background */
+    color: #64ffda;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem; /* Reduced from 1.6rem for better mobile responsiveness */
+    letter-spacing: 1px;
+    width: auto; /* Changed from fixed width to auto */
+    min-width: 10rem; /* Added min-width instead of fixed width */
+    height: auto;
+    backdrop-filter: blur(5px); /* Added blur filter to match navbar style */
+}
+
+.nav-register:hover {
+    background: #64ffda;
+    color: #0c1c3b;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+
+/* Added media queries for responsiveness */
+@media (max-width: 768px) {
+    .below-nav-content {
+        bottom: 4rem;
+    }
+    
+    .nav-time {
+        font-size: 1.2rem;
+    }
+    
+    .nav-register {
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .below-nav-content {
+        bottom: 2rem;
+    }
+    
+    .nav-time {
+        font-size: 1rem;
+    }
+    
+    .nav-register {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}

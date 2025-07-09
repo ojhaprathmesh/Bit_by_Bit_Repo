@@ -1,0 +1,358 @@
+.venue-section {
+  position: relative;
+  padding: 5rem 0;
+  background-color: #0a1e36;
+  overflow: hidden;
+}
+
+.star-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.venue-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.venue-title {
+  font-family: 'Orbitron', 'Press Start 2P', sans-serif;
+  font-size: 2.8rem;
+  color: #fff;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+  margin-bottom: 1rem;
+}
+
+.venue-scanner {
+  width: 300px;
+  height: 4px;
+  background-color: rgba(0, 238, 255, 0.1);
+  margin: 1rem auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.terminal-text {
+  font-family: 'Share Tech Mono', monospace;
+  color: #00eeff;
+  font-size: 1.2rem;
+  height: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .info-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contact-card, .location-card {
+  background: rgba(2, 12, 23, 0.8);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 136, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(0, 136, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.header-icon {
+  color: #00eeff;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.header-line {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00eeff, transparent);
+  margin-top: 0.5rem;
+}
+
+.heading {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.subtext {
+  color: #7dd3fc;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  background: rgba(10, 30, 54, 0.9);
+  padding: 1rem;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(0, 136, 255, 0.4);
+}
+
+.info-icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 136, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  border: 1px solid rgba(0, 238, 255, 0.3);
+}
+
+.icon {
+  color: #00eeff;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: block; /* or inline-block — DO NOT use flex here */
+  margin: auto;    /* Ensures it's centered inside the flex parent */
+}
+
+.info-title {
+  font-weight: bold;
+  color: white;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.3rem;
+}
+
+.info-text {
+  color: #bbb;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 18rem;
+  border-radius: 0.8rem;
+  margin-bottom: 1.5rem;
+  background: rgba(10, 30, 54, 0.9);
+  border: 2px solid rgba(0, 136, 255, 0.4);
+  overflow: hidden;
+  align-items: center;
+}
+
+.navigation-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 30, 54, 0.9);
+  border: 1px solid rgba(0, 238, 255, 0.4);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.button-icon {
+  margin-right: 15px;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #00eeff;
+}
+/* Existing styles remain the same */
+
+/* ========== Mobile Responsive Styles ========== */
+@media (max-width: 768px) {
+  .venue-section {
+    padding: 3rem 0;
+  }
+
+  .venue-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .info-grid {
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .contact-card, 
+  .location-card {
+    padding: 1.8rem;
+  }
+
+  .map-container {
+    height: 16rem;
+  }
+
+  .header-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .subtext {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .venue-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .venue-scanner {
+    width: 70%;
+  }
+
+  .terminal-text {
+    font-size: 1rem;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-grid {
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+
+  .contact-card, 
+  .location-card {
+    padding: 1.2rem;
+  }
+
+  .map-container {
+    height: 14rem;
+  }
+
+  .info-box {
+    padding: 0.8rem;
+  }
+
+  .info-icon-container {
+    width: 35px;
+    height: 35px;
+    margin-right: 0.8rem;
+  }
+
+  .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .info-title {
+    font-size: 0.8rem;
+  }
+
+  .info-text {
+    font-size: 0.75rem;
+  }
+
+  .navigation-button {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .button-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .header-line {
+    width: 80px;
+  }
+}
+
+/* Very small phones (e.g. iPhone SE) */
+@media (max-width: 320px) {
+  .venue-title {
+    font-size: 1.4rem;
+  }
+
+  .map-container {
+    height: 12rem;
+  }
+
+  .contact-info {
+    gap: 0.8rem;
+  }
+}
+/* Center the map container */
+
+/* Center the info boxes content */
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensure the iframe takes full width */
+.google-map {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

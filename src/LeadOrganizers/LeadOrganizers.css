@@ -1,0 +1,374 @@
+.lead-organizers-section {
+  position: relative;
+  padding: 5rem 0;
+  margin: 0;
+  overflow: hidden;
+  background-color: #0a1e36;
+}
+
+.star-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
+.lead-organizers-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 136, 255, 0.05) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.lead-section-title {
+  font-family: 'Orbitron', 'Press Start 2P', sans-serif;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+  z-index: 2;
+}
+
+.lead-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00eeff, transparent);
+  box-shadow: 0 0 15px #00eeff;
+}
+
+.lead-section-subtitle {
+  text-align: center;
+  color: #7dd3fc;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+.lead-organizers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  position: relative;
+  z-index: 2;
+  padding: 0 2rem;
+}
+
+.lead-card {
+  background: rgba(2, 12, 23, 0.8);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(0, 136, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(0, 136, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.lead-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 136, 255, 0) 0%,
+    rgba(0, 136, 255, 0) 40%,
+    rgba(0, 136, 255, 0.1) 45%,
+    rgba(0, 136, 255, 0) 50%,
+    rgba(0, 136, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shine 8s infinite;
+  z-index: 1;
+}
+
+.card-orbit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 136, 255, 0.2);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+.orbit-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: rgba(0, 238, 255, 0.8);
+  border-radius: 50%;
+  top: 5%;
+  left: 50%;
+  box-shadow: 0 0 10px 2px rgba(0, 238, 255, 0.5);
+  animation: orbit-pulse 3s infinite alternate;
+}
+
+@keyframes orbit-pulse {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shine {
+  0% { transform: rotate(30deg) translate(-30%, -30%); }
+  100% { transform: rotate(30deg) translate(30%, 30%); }
+}
+
+.lead-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
+              0 0 30px rgba(0, 238, 255, 0.3),
+              inset 0 0 20px rgba(0, 238, 255, 0.1);
+  border-color: rgba(0, 136, 255, 0.5);
+}
+
+.lead-photo-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  border: 2px solid rgba(0, 136, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 136, 255, 0.3);
+  z-index: 2;
+}
+
+.lead-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a1e36 0%, #020c17 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 238, 255, 0.9);
+  font-size: 2.5rem;
+  font-family: 'Orbitron', sans-serif;
+  position: relative;
+  z-index: 2;
+}
+
+.lead-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 20px rgba(0, 238, 255, 0.5);
+  animation: lead-glow-pulse 4s infinite alternate;
+  z-index: 1;
+}
+
+@keyframes lead-glow-pulse {
+  0% { box-shadow: inset 0 0 10px rgba(0, 238, 255, 0.3); }
+  100% { box-shadow: inset 0 0 25px rgba(0, 238, 255, 0.7); }
+}
+
+.lead-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.lead-name::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00eeff, transparent);
+  box-shadow: 0 0 8px #00eeff;
+}
+
+.lead-title {
+  color: #a7c7e3;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  margin: 1rem 0 1.5rem;
+  text-align: center;
+  line-height: 1.6;
+  white-space: pre-line;
+  z-index: 2;
+}
+
+.lead-social {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  z-index: 2;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 136, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 136, 255, 0.3);
+}
+
+.social-icon:hover {
+  background: rgba(0, 136, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 0 12px rgba(0, 136, 255, 0.4);
+}
+
+.lead-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lead-particle {
+  position: absolute;
+  background: rgba(0, 238, 255, 0.3);
+  border-radius: 50%;
+  animation: float-particle linear infinite;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* Media Queries for better responsiveness */
+@media (max-width: 992px) {
+  .lead-organizers-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .lead-section-title {
+    font-size: 2rem;
+  }
+  
+  .lead-organizers-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding: 0 1rem;
+  }
+  
+  .lead-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .lead-photo-container {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .lead-photo-placeholder {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .lead-organizers-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .lead-section-title {
+    font-size: 1.8rem;
+  }
+  
+  .lead-section-subtitle {
+    font-size: 1rem;
+  }
+}/* Add this to your existing CSS */
+.lead-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Update the lead-photo-placeholder to remove the flex styles */
+.lead-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a1e36 0%, #020c17 100%);
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
